@@ -1,0 +1,129 @@
+{
+  "shortTitle": "Wild Animals: A Touch and Feel Book - Little Hippo Books - Children's Board Book - Educational",
+  "longTitle": "Wild Animals: A Touch and Feel Book - Little Hippo Books - Children's Board Book - Educational",
+  "legacyTitle": "Wild Animals: A Touch and Feel Book - Little Hippo Books - Children's Board Book - Educational",
+  "author": "Francie Darrell",
+  "director": null,
+  "artist": null,
+  "platform": null,
+  "regionCode": null,
+  "console": null,
+  "isbn10": "1951356640",
+  "isbn13": "9781951356644",
+  "salesRank": 479,
+  "hasSalesRank": true,
+  "salesRankBracketing": 1000,
+  "bindingType": "Hardback",
+  "publisher": "Little Hippo Books",
+  "fromPrice": 4.08,
+  "priceRanges": [
+    "3.00-5.99"
+  ],
+  "masterHandle": null,
+  "masterProductId": null,
+  "productHandle": "wild-animals-a-touch-and-feel-book-little-hippo-books-children-s-board-book-educ-book-francie-darrell-9781951356644",
+  "hierarchicalCategories": {},
+  "productType": "Book",
+  "productTypeRank": 1,
+  "quantity": 102,
+  "inStock": true,
+  "id": 9782512648465,
+  "seriesTitle": null,
+  "imageURL": "https://image-server.worldofbooks.com/images/9781951356644.jpg",
+  "createdDateTimestamp": null,
+  "datePublished": "01/06/2020",
+  "yearPublished": 2020,
+  "languages": null,
+  "languageSort": null,
+  "reviewRating": null,
+  "reviewCount": null,
+  "blockedMarkets": null,
+  "availableMarkets": null,
+  "readingAge": null,
+  "availableConditions": [
+    "WELL_READ",
+    "GOOD"
+  ],
+  "genre": null,
+  "tags": [],
+  "displayTags": null,
+  "categories": [],
+  "collection_ids": [
+    522450206993
+  ],
+  "isUk": false,
+  "isUsa": true,
+  "isLowStock": false,
+  "isHighStock": true,
+  "isUsed": true,
+  "isNew": false,
+  "bestConditionPrice": 4.38,
+  "objectID": "9781951356644",
+  "_highlightResult": {
+    "shortTitle": {
+      "value": "Wild Animals: A Touch and Feel Book - Little Hippo Books - <em>Children's</em> Board Book - Educational",
+      "matchLevel": "full",
+      "fullyHighlighted": false,
+      "matchedWords": [
+        "childrens"
+      ]
+    },
+    "longTitle": {
+      "value": "Wild Animals: A Touch and Feel Book - Little Hippo Books - <em>Children's</em> Board Book - Educational",
+      "matchLevel": "full",
+      "fullyHighlighted": false,
+      "matchedWords": [
+        "childrens"
+      ]
+    },
+    "author": {
+      "value": "Francie Darrell",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "isbn10": {
+      "value": "1951356640",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "isbn13": {
+      "value": "9781951356644",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "bindingType": {
+      "value": "Hardback",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "publisher": {
+      "value": "Little Hippo Books",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "priceRanges": [
+      {
+        "value": "3.00-5.99",
+        "matchLevel": "none",
+        "matchedWords": []
+      }
+    ],
+    "productType": {
+      "value": "Book",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "quantity": {
+      "value": "102",
+      "matchLevel": "none",
+      "matchedWords": []
+    },
+    "collection_ids": [
+      {
+        "value": "522450206993",
+        "matchLevel": "none",
+        "matchedWords": []
+      }
+    ]
+  }
+}

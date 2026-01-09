@@ -1,0 +1,52 @@
+{
+  "requestsFinished": 0,
+  "requestsFailed": 1,
+  "requestsRetries": 1,
+  "requestsFailedPerMinute": 0,
+  "requestsFinishedPerMinute": 0,
+  "requestMinDurationMillis": null,
+  "requestMaxDurationMillis": 0,
+  "requestTotalFailedDurationMillis": 54828,
+  "requestTotalFinishedDurationMillis": 0,
+  "crawlerStartedAt": "2026-01-09T15:37:51.472Z",
+  "crawlerFinishedAt": "2026-01-09T15:41:28.647Z",
+  "statsPersistedAt": "2026-01-09T15:41:28.647Z",
+  "crawlerRuntimeMillis": 217457,
+  "crawlerLastStartTimestamp": 1767973071190,
+  "requestRetryHistogram": [
+    null,
+    null,
+    null,
+    1
+  ],
+  "statsId": 0,
+  "requestAvgFailedDurationMillis": 54828,
+  "requestAvgFinishedDurationMillis": null,
+  "requestTotalDurationMillis": 54828,
+  "requestsTotal": 1,
+  "requestsWithStatusCode": {
+    "200": 4
+  },
+  "errors": {
+    "C:\\Users\\mages\\Downloads\\scrap\\product-data-explorer\\backend\\src\\scraper\\scraper.service.ts:195:31": {
+      "23505": {
+        "QueryFailedError": {
+          "duplicate key value violates unique constraint \"UQ_09e44de0fcb8677c097627190e7\"": {
+            "count": 1
+          }
+        }
+      }
+    }
+  },
+  "retryErrors": {
+    "C:\\Users\\mages\\Downloads\\scrap\\product-data-explorer\\backend\\src\\scraper\\scraper.service.ts:195:31": {
+      "23505": {
+        "QueryFailedError": {
+          "duplicate key value violates unique constraint \"UQ_09e44de0fcb8677c097627190e7\"": {
+            "count": 3
+          }
+        }
+      }
+    }
+  }
+}
