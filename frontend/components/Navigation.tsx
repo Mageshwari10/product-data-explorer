@@ -104,7 +104,7 @@ export default function Navigation() {
 
                 {/* Desktop Category Navigation - Secondary Row */}
                 <div className="hidden lg:flex items-center gap-1 border-t border-emerald-50/50 h-12">
-                    {books.map((item) => (
+                    {books.map((item: any) => (
                         <div key={item.id} className="relative group/item h-full flex items-center">
                             <Link
                                 href={`/category/${item.slug}`}
@@ -118,7 +118,7 @@ export default function Navigation() {
 
                     <div className="w-px h-4 bg-slate-200 mx-2"></div>
 
-                    {media.map((item) => (
+                    {media.map((item: any) => (
                         <div key={item.id} className="relative group/item h-full flex items-center">
                             <Link
                                 href={`/category/${item.slug}`}
@@ -132,7 +132,7 @@ export default function Navigation() {
 
                     <div className="flex-1"></div>
 
-                    {others.map((item) => (
+                    {others.map((item: any) => (
                         <Link
                             key={item.id}
                             href={`/category/${item.slug}`}
@@ -164,7 +164,7 @@ export default function Navigation() {
                             </form>
                             <div className="space-y-6">
                                 <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 border-b pb-4">Library</div>
-                                {[...books, ...media, ...others].map((item) => (
+                                {[...books, ...media, ...others].map((item: any) => (
                                     <Link key={item.id} href={`/category/${item.slug}`} onClick={() => setMobileMenuOpen(false)} className="block text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter">{item.title}</Link>
                                 ))}
                             </div>
