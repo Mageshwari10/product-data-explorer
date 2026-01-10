@@ -15,7 +15,7 @@
   "salesRankBracketing": 1000,
   "bindingType": "Hardback",
   "publisher": "Little Hippo Books",
-  "fromPrice": 4.08,
+  "fromPrice": 4.48,
   "priceRanges": [
     "3.00-5.99"
   ],
@@ -41,8 +41,8 @@
   "availableMarkets": null,
   "readingAge": null,
   "availableConditions": [
-    "WELL_READ",
-    "GOOD"
+    "GOOD",
+    "WELL_READ"
   ],
   "genre": null,
   "tags": [],
@@ -57,7 +57,7 @@
   "isHighStock": true,
   "isUsed": true,
   "isNew": false,
-  "bestConditionPrice": 4.38,
+  "bestConditionPrice": 4.78,
   "objectID": "9781951356644",
   "_highlightResult": {
     "shortTitle": {

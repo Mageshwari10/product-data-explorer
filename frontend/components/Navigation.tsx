@@ -54,9 +54,9 @@ export default function Navigation() {
     const mediaCategorySlugs = ['dvds', 'cds', 'games'];
     const otherCategorySlugs = ['sale', 'sell-your-books'];
 
-    const books = menuItems.filter(i => bookCategorySlugs.includes(i.slug));
-    const media = menuItems.filter(i => mediaCategorySlugs.includes(i.slug));
-    const others = menuItems.filter(i => otherCategorySlugs.includes(i.slug));
+    const books = menuItems.filter((i: any) => bookCategorySlugs.includes(i.slug));
+    const media = menuItems.filter((i: any) => mediaCategorySlugs.includes(i.slug));
+    const others = menuItems.filter((i: any) => otherCategorySlugs.includes(i.slug));
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();

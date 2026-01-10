@@ -281,9 +281,9 @@ export class ScraperService {
         }
 
         // Algolia Config
-        const appId = 'AR33G9NJGJ';
-        const apiKey = '96c16938971ef89ae1d14e21494e2114';
-        const indexName = 'shopify_products_us'; // Defaulting to US index
+        const appId = process.env.ALGOLIA_APP_ID || 'AR33G9NJGJ';
+        const apiKey = process.env.ALGOLIA_API_KEY || '96c16938971ef89ae1d14e21494e2114';
+        const indexName = process.env.ALGOLIA_INDEX_NAME || 'shopify_products_us'; // Defaulting to US index
 
         try {
             // Use fetch to query Algolia

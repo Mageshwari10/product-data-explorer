@@ -15,6 +15,23 @@ services:
     networks:
       - product-explorer-network
 
+  backend:
+    build:
+      context: ./backend
+    container_name: product-explorer-backend
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: product_explorer
+    ports:
+      - "3001:3001"
+    networks:
+      - product-explorer-network
+
   # Optional: Redis for Queue (BullMQ) if needed later
   # redis:
   #   image: redis:alpine
