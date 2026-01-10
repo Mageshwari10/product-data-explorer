@@ -40,12 +40,25 @@ Your frontend will be available at: `https://your-project.vercel.app`
 
 ## Backend Deployment (Render)
 
+### Option 1: Blueprint (Recommended)
+This method uses the `render.yaml` file to automatically configure the service and database.
+
+1. **Push your code to a Git repository**
+2. **Go to Render Dashboard**
+3. **Click "New +" -> "Blueprint"**
+4. **Connect your repository**
+5. **Click "Apply"**
+   - Render will automatically create the PostgreSQL database and the Web Service using the Docker configuration.
+   - It will verify the `render.yaml` and set up environment variables linking the DB to the Service.
+
+### Option 2: Manual Setup
+(See below if you prefer manual configuration, but ensure you select "Docker" runtime instead of "Node" due to Playwright dependencies)
+
 ### Prerequisites
 - Render account (free at https://render.com)
 - GitHub, GitLab, or Bitbucket repository with your code
-- PostgreSQL database (Render provides a free tier)
 
-### Steps
+### Steps (Manual)
 
 1. **Push your code to a Git repository**
    ```bash
@@ -68,9 +81,7 @@ Your frontend will be available at: `https://your-project.vercel.app`
    - Configure settings:
      - **Name**: `product-explorer-backend`
      - **Root Directory**: `backend`
-     - **Runtime**: Node
-     - **Build Command**: `npm install && npm run build`
-     - **Start Command**: `npm run start:prod`
+     - **Runtime**: Docker
      - **Plan**: Free
 
 4. **Add Environment Variables**
@@ -83,12 +94,11 @@ Your frontend will be available at: `https://your-project.vercel.app`
    DATABASE_USER=<postgres_user>
    DATABASE_PASSWORD=<postgres_password>
    DATABASE_NAME=product_explorer
-   CORS_ORIGIN=https://your-frontend.vercel.app
    ```
 
 5. **Deploy**
    - Click "Create Web Service"
-   - Wait for build to complete
+   - Wait for build to complete (it may take a few minutes to build the Docker image)
 
 ### Backend URL
 Your backend will be available at: `https://product-explorer-backend.onrender.com`

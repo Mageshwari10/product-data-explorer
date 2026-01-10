@@ -1,20 +1,22 @@
-FROM node:20-alpine AS builder
+FROM mcr.microsoft.com/playwright:v1.48.1-jammy
+
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Install Playwright browsers
+RUN npx playwright install --with-deps
 
 COPY . .
+
+# Build the application
 RUN npm run build
 
-FROM node:20-alpine
-WORKDIR /app
-ENV NODE_ENV=production
-
-COPY package.json package-lock.json* ./
-RUN npm install --production
-
-COPY --from=builder /app/dist ./dist
-
+# Expose the port
 EXPOSE 3001
-CMD ["node", "dist/main"]
+
+# Start the application
+CMD ["npm", "run", "start:prod"]

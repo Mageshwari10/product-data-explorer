@@ -1,23 +1,34 @@
 services:
   - type: web
     name: product-explorer-backend
-    env: node
+    runtime: docker
+    rootDir: backend
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_HOST
-        sync: false
+        fromDatabase:
+          name: product-explorer-db
+          property: host
       - key: DATABASE_PORT
-        value: 5432
+        fromDatabase:
+          name: product-explorer-db
+          property: port
       - key: DATABASE_USER
-        sync: false
+        fromDatabase:
+          name: product-explorer-db
+          property: user
       - key: DATABASE_PASSWORD
-        sync: false
+        fromDatabase:
+          name: product-explorer-db
+          property: password
       - key: DATABASE_NAME
-        value: product_explorer
+        fromDatabase:
+          name: product-explorer-db
+          property: database
+      - key: CORS_ORIGIN
+        value: "*"
       - key: PORT
         value: 3001
 
