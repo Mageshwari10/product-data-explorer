@@ -523,4 +523,9 @@ export class ScraperService {
 
         await crawler.run([product.sourceUrl]);
     }
+    async scrapeCategories() {
+    this.logger.log('Triggering category scrape...');
+    await this.scrapeNavigation();
+    }
+
 }
