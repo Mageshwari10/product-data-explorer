@@ -1,3 +1,4 @@
+// trigger-vercel-rebuild
 import Navigation from '@/components/Navigation';
 import ScrapeTrigger from '@/components/ScrapeTrigger';
 import Link from 'next/link';
