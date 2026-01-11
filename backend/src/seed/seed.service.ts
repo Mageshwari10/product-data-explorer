@@ -50,6 +50,20 @@ export class SeedService {
             navigationEntities.push(existingNav);
         }
 
+        // Ensure top-level categories exist for each navigation item
+        for (const nav of navigationEntities) {
+            const existingTopCategory = await this.categoryRepo.findOne({ where: { slug: nav.slug } });
+            if (!existingTopCategory) {
+                await this.categoryRepo.save(this.categoryRepo.create({
+                    title: nav.title,
+                    slug: nav.slug,
+                    navigation: nav,
+                    lastScrapedAt: new Date()
+                }));
+                this.logger.log(`Created top-level category: ${nav.title}`);
+            }
+        }
+
         // Sample categories data
         const categoriesData = [
             { title: 'Science Fiction', slug: 'science-fiction', navSlug: 'fiction' },
