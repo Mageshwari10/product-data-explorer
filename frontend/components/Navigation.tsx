@@ -50,7 +50,7 @@ export default function Navigation() {
     const menuItems = navItems || [];
 
     // Group categories for better visibility
-    const bookCategorySlugs = ['books', 'fiction-books', 'non-fiction-books', 'childrens-books', 'rare-books'];
+    const bookCategorySlugs = ['fiction', 'non-fiction', 'childrens-books', 'academic', 'romance'];
     const mediaCategorySlugs = ['dvds', 'cds', 'games'];
     const otherCategorySlugs = ['sale', 'sell-your-books'];
 
