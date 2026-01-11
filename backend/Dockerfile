@@ -9,7 +9,7 @@ RUN npm install -g @nestjs/cli
 
 COPY . .
 
-RUN nest build
+RUN npx nest build
 
 EXPOSE 3001
 

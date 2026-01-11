@@ -13,6 +13,7 @@ import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { ScraperModule } from './scraper/scraper.module';
 import { HistoryModule } from './history/history.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
     imports: [
@@ -25,7 +26,7 @@ import { HistoryModule } from './history/history.module';
             password: process.env.DATABASE_PASSWORD,
             database: process.env.DATABASE_NAME,
             entities: [Navigation, Category, Product, ProductDetail, Review, ScrapeJob, ViewHistory],
-            synchronize: true, // Auto-create tables (dev only)
+            synchronize: process.env.NODE_ENV === 'development', // Only sync in development
         }),
         TypeOrmModule.forFeature([Navigation, Category, Product, ProductDetail, Review, ScrapeJob, ViewHistory]),
         NavigationModule,
@@ -33,6 +34,7 @@ import { HistoryModule } from './history/history.module';
         ProductModule,
         ScraperModule,
         HistoryModule,
+        SeedModule,
     ],
     controllers: [],
     providers: [],

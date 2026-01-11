@@ -9,6 +9,7 @@ import { ScrapeJob, ScrapeStatus } from '../entities/scrape-job.entity';
 import { ProductDetail } from '../entities/product-detail.entity';
 import { Review } from '../entities/review.entity';
 
+
 @Injectable()
 export class ScraperService {
     private readonly logger = new Logger(ScraperService.name);
@@ -28,9 +29,16 @@ export class ScraperService {
         private reviewRepo: Repository<Review>,
     ) { }
 
+
+
     async onModuleInit() {
         this.logger.log('Scraper Service Initialized');
     }
+
+    async scrapeCategories() {
+    return await this.categoryRepo.find();
+ }
+
 
     async scrapeNavigation() {
         const crawler = new PlaywrightCrawler({
@@ -523,9 +531,5 @@ export class ScraperService {
 
         await crawler.run([product.sourceUrl]);
     }
-    async scrapeCategories() {
-    this.logger.log('Triggering category scrape...');
-    await this.scrapeNavigation();
-    }
-
+   
 }
