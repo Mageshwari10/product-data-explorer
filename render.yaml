@@ -3,7 +3,6 @@ services:
     name: product-explorer-backend
     runtime: docker
     rootDir: backend
-    dockerContext: backend
     plan: free
     envVars:
       - key: NODE_ENV
@@ -28,11 +27,12 @@ services:
         fromDatabase:
           name: product-explorer-db
           property: database
-      - key: PORT
-        value: 3001
       - key: CORS_ORIGIN
         value: "*"
+      - key: PORT
+        value: 3001
 
 databases:
   - name: product-explorer-db
     plan: free
+
