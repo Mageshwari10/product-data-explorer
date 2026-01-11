@@ -28,4 +28,10 @@ export class ScraperController {
         await this.scraperService.scrapeDetail(id, true);
         return { message: `Updated details for product ${id}` };
     }
+        @Post('categories')
+    async scrapeCategories() {
+        await this.scraperService.scrapeCategories();
+        return { message: 'Categories scrape triggered' };
+    }
+
 }
