@@ -35,6 +35,4 @@ services:
 
 databases:
   - name: product-explorer-db
-    databaseName: product_explorer
-    user: postgres
     plan: free
