@@ -3,11 +3,13 @@ FROM node:18
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
+
+RUN npm install -g @nestjs/cli
 
 COPY . .
 
-RUN npm run build
+RUN nest build
 
 EXPOSE 3001
 
