@@ -33,7 +33,7 @@ export default function CartPage() {
                             <p className="text-slate-500 mb-8 max-w-sm mx-auto">
                                 Looks like you haven't added any books to your collection yet. Start exploring our intelligent data.
                             </p>
-                            <Link href="/category/books" className="btn-premium inline-flex py-4">
+                            <Link href="/category/fiction" className="btn-premium inline-flex py-4">
                                 Browse Categories
                             </Link>
                         </div>

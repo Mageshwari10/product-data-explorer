@@ -31,7 +31,7 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-                            <Link href="/category/books" className="btn-premium w-full sm:w-auto text-lg">
+                            <Link href="/category/fiction" className="btn-premium w-full sm:w-auto text-lg">
                                 Start Exploring
                             </Link>
                             <a href="#admin" className="px-8 py-3.5 bg-white text-slate-900 font-semibold rounded-xl border border-emerald-100 hover:bg-emerald-50 transition-all w-full sm:w-auto shadow-sm">
