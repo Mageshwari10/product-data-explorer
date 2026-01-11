@@ -28,10 +28,10 @@ services:
         fromDatabase:
           name: product-explorer-db
           property: database
-      - key: CORS_ORIGIN
-        value: "*"
       - key: PORT
         value: 3001
+      - key: CORS_ORIGIN
+        value: "*"
 
 databases:
   - name: product-explorer-db
