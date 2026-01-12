@@ -1,13 +1,25 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen">
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
             <Navigation />
-            <div className="container mx-auto px-4 py-20">
-                <div className="max-w-4xl mx-auto">
+            
+            <main className="container mx-auto px-4 py-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="max-w-4xl mx-auto"
+                >
+                    <div className="glass p-8 md:p-12 rounded-3xl mb-12">
+                        <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 font-outfit">
+                            About Our Product Explorer
+                        </h1>
+                        <div className="h-1 w-24 bg-gradient-to-r from-emerald-500 to-teal-500 mb-8 rounded-full"></div>
                     <div className="text-center mb-16">
                         <div className="inline-block px-4 py-1 mb-4 text-[10px] font-black tracking-widest text-emerald-700 uppercase bg-emerald-100 rounded-full">
                             Our Story
@@ -49,8 +61,9 @@ export default function AboutPage() {
                             <div className="bg-white/10 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest">Algolia Sync</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </main>
+                    </div>
+                </motion.div>
+            </main>
+        </div>
     );
 }

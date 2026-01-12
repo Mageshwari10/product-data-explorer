@@ -134,6 +134,12 @@ export default function Navigation() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-4">
+                        <Link href="/about" className="hidden lg:block px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg">
+                            About
+                        </Link>
+                        <Link href="/contact" className="hidden lg:block px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg">
+                            Contact
+                        </Link>
                         <Link href="/cart" className="relative p-2 rounded-xl hover:bg-emerald-50 transition-all group">
                             <span className="text-2xl group-hover:scale-110 transition-transform">🛒</span>
                             {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-emerald-600 text-white text-[9px] font-black rounded-full h-5 w-5 flex items-center justify-center border-2 border-white">{cartCount}</span>}
@@ -210,6 +216,9 @@ export default function Navigation() {
                                 {[...books, ...media, ...others].map((item: any) => (
                                     <Link key={item.id} href={`/category/${item.slug}`} onClick={() => setMobileMenuOpen(false)} className="block text-lg sm:text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter py-2">{item.title}</Link>
                                 ))}
+                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 border-b pb-4 mt-6">Company</div>
+                                <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block text-lg sm:text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter py-2">About</Link>
+                                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block text-lg sm:text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter py-2">Contact</Link>
                             </div>
                         </motion.div>
                     </>
