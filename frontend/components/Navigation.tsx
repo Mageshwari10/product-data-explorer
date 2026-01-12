@@ -72,14 +72,30 @@ export default function Navigation() {
     return (
         <nav className="glass sticky top-0 z-50 border-b border-gray-200/20">
             <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-20 gap-8">
+                <div className="flex items-center justify-between h-16 md:h-20 gap-4 md:gap-8">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 shrink-0 group">
                         <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-emerald-500/30 group-hover:rotate-12 transition-transform">📚</div>
                         <span className="font-outfit text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Wob<span className="text-emerald-600">Explorer</span></span>
                     </Link>
 
-                    {/* Search Bar - Global */}
+                    {/* Search Bar - Mobile */}
+                    <form onSubmit={handleSearch} className="flex-1 max-w-xl md:hidden mb-2">
+                        <div className="relative group">
+                            <input
+                                type="text"
+                                placeholder="Search titles..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-emerald-50/50 border border-emerald-100 rounded-xl py-2 px-4 pl-9 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all placeholder:text-slate-400"
+                            />
+                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-emerald-600 opacity-50 group-hover:opacity-100 transition-opacity text-sm">
+                                🔍
+                            </div>
+                        </div>
+                    </form>
+
+                    {/* Search Bar - Desktop */}
                     <form onSubmit={handleSearch} className="flex-1 max-w-xl hidden md:block">
                         <div className="relative group">
                             <input
@@ -152,7 +168,7 @@ export default function Navigation() {
                 {mobileMenuOpen && (
                     <>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileMenuOpen(false)} className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100]" />
-                        <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} className="fixed top-0 right-0 h-full w-[85%] max-w-[350px] bg-white z-[105] shadow-2xl p-8 pt-20 overflow-y-auto">
+                        <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} className="fixed top-0 right-0 h-full w-[90%] sm:w-[85%] max-w-[320px] bg-white z-[105] shadow-2xl p-6 sm:p-8 pt-20 overflow-y-auto">
                             <form onSubmit={handleSearch} className="mb-8">
                                 <div className="relative">
                                     <input
@@ -168,7 +184,7 @@ export default function Navigation() {
                             <div className="space-y-6">
                                 <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 border-b pb-4">Library</div>
                                 {[...books, ...media, ...others].map((item: any) => (
-                                    <Link key={item.id} href={`/category/${item.slug}`} onClick={() => setMobileMenuOpen(false)} className="block text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter">{item.title}</Link>
+                                    <Link key={item.id} href={`/category/${item.slug}`} onClick={() => setMobileMenuOpen(false)} className="block text-lg sm:text-xl font-black text-slate-900 hover:text-emerald-600 uppercase tracking-tighter py-2">{item.title}</Link>
                                 ))}
                             </div>
                         </motion.div>
