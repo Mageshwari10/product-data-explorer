@@ -42,6 +42,45 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Categories Section - Mobile Friendly */}
+            <section className="py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <div className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 rounded-full">
+                            Browse Categories
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                            Explore Our <span className="gradient-text">Library</span>
+                        </h2>
+                        <p className="text-slate-500 max-w-2xl mx-auto">
+                            Discover thousands of titles across our curated collection
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+                        <Link href="/category/fiction" className="group p-6 bg-emerald-50 rounded-2xl text-center hover:bg-emerald-100 transition-all hover:-translate-y-1">
+                            <div className="text-3xl mb-2">📚</div>
+                            <div className="font-black text-sm text-slate-900 group-hover:text-emerald-600">Fiction</div>
+                        </Link>
+                        <Link href="/category/non-fiction" className="group p-6 bg-blue-50 rounded-2xl text-center hover:bg-blue-100 transition-all hover:-translate-y-1">
+                            <div className="text-3xl mb-2">📖</div>
+                            <div className="font-black text-sm text-slate-900 group-hover:text-blue-600">Non-Fiction</div>
+                        </Link>
+                        <Link href="/category/childrens-books" className="group p-6 bg-pink-50 rounded-2xl text-center hover:bg-pink-100 transition-all hover:-translate-y-1">
+                            <div className="text-3xl mb-2">🧸</div>
+                            <div className="font-black text-sm text-slate-900 group-hover:text-pink-600">Children's</div>
+                        </Link>
+                        <Link href="/category/academic" className="group p-6 bg-purple-50 rounded-2xl text-center hover:bg-purple-100 transition-all hover:-translate-y-1">
+                            <div className="text-3xl mb-2">🎓</div>
+                            <div className="font-black text-sm text-slate-900 group-hover:text-purple-600">Academic</div>
+                        </Link>
+                        <Link href="/category/romance" className="group p-6 bg-red-50 rounded-2xl text-center hover:bg-red-100 transition-all hover:-translate-y-1">
+                            <div className="text-3xl mb-2">💕</div>
+                            <div className="font-black text-sm text-slate-900 group-hover:text-red-600">Romance</div>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             {/* Admin Section */}
             <section id="admin" className="py-16 sm:py-24 bg-[#f0f9f4] border-t border-emerald-100">
                 <div className="container mx-auto px-4">
