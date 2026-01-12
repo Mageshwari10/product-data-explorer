@@ -113,46 +113,53 @@ export default function CategoryPage() {
                         transition={{ duration: 0.5 }}
                     >
                         {viewMode === 'grid' ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12">
+                            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-12">
                                 {products.map((p: any) => (
                                     <ProductCard key={p.id} product={p} />
                                 ))}
                             </div>
                         ) : (
                             <div className="glass rounded-[32px] overflow-hidden border-white/50 mb-12">
-                                <table className="w-full text-left">
-                                    <thead>
-                                        <tr className="bg-emerald-600/5 text-emerald-800 text-[10px] font-black uppercase tracking-widest border-b border-emerald-100">
-                                            <th className="px-8 py-5 text-center">Preview</th>
-                                            <th className="px-8 py-5">Title</th>
-                                            <th className="px-8 py-5">Price Est.</th>
-                                            <th className="px-8 py-5 text-right">Explore</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-emerald-100/30">
-                                        {products.map((p: any) => (
-                                            <tr key={p.id} className="group hover:bg-white transition-all">
-                                                <td className="px-8 py-4 w-24">
-                                                    <div className="w-12 h-16 bg-white rounded-lg shadow-sm border border-emerald-50 relative overflow-hidden">
-                                                        {p.imageUrl && <img src={p.imageUrl} alt={p.title} className="object-cover w-full h-full" />}
-                                                    </div>
-                                                </td>
-                                                <td className="px-8 py-4">
-                                                    <div className="font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors uppercase tracking-tight text-sm">{p.title}</div>
-                                                </td>
-                                                <td className="px-8 py-4">
-                                                    <span className="font-black text-emerald-600 text-lg">{p.price}</span>
-                                                    <span className="text-[10px] text-slate-400 font-bold ml-1">{p.currency}</span>
-                                                </td>
-                                                <td className="px-8 py-4 text-right">
-                                                    <Link href={`/product/${p.id}`} className="inline-flex items-center gap-2 group-hover:bg-emerald-600 group-hover:text-white px-5 py-2.5 rounded-xl text-[10px] font-black text-emerald-600 border border-emerald-100 transition-all active:scale-95 uppercase tracking-widest">
-                                                        Details ➔
-                                                    </Link>
-                                                </td>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left min-w-[600px]">
+                                        <thead>
+                                            <tr className="bg-emerald-600/5 text-emerald-800 text-[10px] font-black uppercase tracking-widest border-b border-emerald-100">
+                                                <th className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-center">Preview</th>
+                                                <th className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5">Title</th>
+                                                <th className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5">Price Est.</th>
+                                                <th className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-right hidden sm:table-cell">Explore</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody className="divide-y divide-emerald-100/30">
+                                            {products.map((p: any) => (
+                                                <tr key={p.id} className="group hover:bg-white transition-all">
+                                                    <td className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 w-16 sm:w-20 md:w-24">
+                                                        <div className="w-12 h-16 bg-white rounded-lg shadow-sm border border-emerald-50 relative overflow-hidden">
+                                                            {p.imageUrl && <img src={p.imageUrl} alt={p.title} className="object-cover w-full h-full" />}
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-4 sm:px-6 md:px-8 py-3 sm:py-4">
+                                                        <div className="font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors uppercase tracking-tight text-xs sm:text-sm">{p.title}</div>
+                                                    </td>
+                                                    <td className="px-4 sm:px-6 md:px-8 py-3 sm:py-4">
+                                                        <span className="font-black text-emerald-600 text-sm sm:text-base md:text-lg">{p.price}</span>
+                                                        <span className="text-[8px] sm:text-[9px] md:text-[10px] text-slate-400 font-bold ml-1">{p.currency}</span>
+                                                    </td>
+                                                    <td className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-right hidden sm:table-cell">
+                                                        <Link href={`/product/${p.id}`} className="inline-flex items-center gap-2 group-hover:bg-emerald-600 group-hover:text-white px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-xl text-[8px] sm:text-[9px] md:text-[10px] font-black text-emerald-600 border border-emerald-100 transition-all active:scale-95 uppercase tracking-widest">
+                                                            Details ➔
+                                                        </Link>
+                                                    </td>
+                                                    <td className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 sm:hidden">
+                                                        <Link href={`/product/${p.id}`} className="w-full block text-center group-hover:bg-emerald-600 group-hover:text-white px-3 py-2 rounded-xl text-[8px] font-black text-emerald-600 border border-emerald-100 transition-all active:scale-95 uppercase tracking-widest">
+                                                            View
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         )}
 
