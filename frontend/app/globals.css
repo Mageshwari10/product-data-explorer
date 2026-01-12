@@ -17,10 +17,6 @@
         @apply font-inter tracking-tight bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-slate-900;
     }
 
-    * {
-        @apply border-gray-200;
-    }
-
     html {
         scroll-behavior: smooth;
     }
