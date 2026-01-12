@@ -311,8 +311,8 @@ export default function ProductPage() {
 
                             {/* Enhanced Metadata */}
                             <div className="mt-12 pt-8 border-t border-slate-200">
-                                <h2 className="text-[10px] font-black text-slate-400 mb-6 uppercase tracking-widest text-emerald-600/60">Product Metadata</h2>
-                                <div className="grid grid-cols-2 gap-4">
+                                <h2 className="text-[10px] font-black text-slate-400 mb-6 uppercase tracking-widest text-emerald-600/60">Product Details</h2>
+                                <div className="grid grid-cols-2 gap-4 mb-6">
                                     <div className="bg-white p-4 rounded-2xl border border-emerald-50 shadow-sm">
                                         <div className="text-[8px] font-black uppercase tracking-widest text-emerald-600/40 mb-1">Category</div>
                                         <div className="text-[11px] font-black text-slate-900 uppercase tracking-tight">{product.category?.title || 'N/A'}</div>
@@ -328,6 +328,47 @@ export default function ProductPage() {
                                     <div className="bg-white p-4 rounded-2xl border border-emerald-50 shadow-sm">
                                         <div className="text-[8px] font-black uppercase tracking-widest text-emerald-600/40 mb-1">Rating</div>
                                         <div className="text-[11px] font-black text-slate-900 uppercase tracking-tight">{averageRating || 'N/A'}</div>
+                                    </div>
+                                </div>
+                                
+                                {/* Additional Metadata */}
+                                <div className="bg-white p-6 rounded-2xl border border-emerald-50 shadow-sm">
+                                    <h3 className="text-[9px] font-black text-slate-400 mb-4 uppercase tracking-widest">Additional Information</h3>
+                                    <div className="space-y-3">
+                                        {product.isbn && (
+                                            <div className="flex justify-between items-center py-2 border-b border-slate-100">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">ISBN</span>
+                                                <span className="text-[10px] font-mono text-slate-900">{product.isbn}</span>
+                                            </div>
+                                        )}
+                                        {product.publisher && (
+                                            <div className="flex justify-between items-center py-2 border-b border-slate-100">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Publisher</span>
+                                                <span className="text-[10px] font-black text-slate-900 uppercase tracking-tight">{product.publisher}</span>
+                                            </div>
+                                        )}
+                                        {product.publicationDate && (
+                                            <div className="flex justify-between items-center py-2 border-b border-slate-100">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Publication Date</span>
+                                                <span className="text-[10px] font-black text-slate-900">{new Date(product.publicationDate).toLocaleDateString()}</span>
+                                            </div>
+                                        )}
+                                        {product.author && (
+                                            <div className="flex justify-between items-center py-2 border-b border-slate-100">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Author</span>
+                                                <span className="text-[10px] font-black text-slate-900 uppercase tracking-tight">{product.author}</span>
+                                            </div>
+                                        )}
+                                        {product.sourceId && (
+                                            <div className="flex justify-between items-center py-2 border-b border-slate-100">
+                                                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Source ID</span>
+                                                <span className="text-[10px] font-mono text-slate-900">{product.sourceId}</span>
+                                            </div>
+                                        )}
+                                        <div className="flex justify-between items-center py-2">
+                                            <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Product ID</span>
+                                            <span className="text-[10px] font-mono text-slate-900">#{product.id}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
