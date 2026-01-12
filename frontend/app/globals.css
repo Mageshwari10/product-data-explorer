@@ -5,6 +5,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
+    /* Increase base font sizes for better readability */
+    html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply font-inter tracking-tight bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-slate-900;
+        font-size: 16px;
+    }
 
     h1,
     h2,
@@ -12,13 +22,30 @@
     h4 {
         @apply font-outfit;
     }
-
-    body {
-        @apply font-inter tracking-tight bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-slate-900;
+    
+    /* Override very small text sizes */
+    .text-xs {
+        font-size: 0.875rem !important; /* 14px instead of 12px */
     }
-
-    html {
-        scroll-behavior: smooth;
+    
+    .text-sm {
+        font-size: 1rem !important; /* 16px instead of 14px */
+    }
+    
+    .text-base {
+        font-size: 1.125rem !important; /* 18px instead of 16px */
+    }
+    
+    .text-lg {
+        font-size: 1.25rem !important; /* 20px instead of 18px */
+    }
+    
+    .text-xl {
+        font-size: 1.5rem !important; /* 24px instead of 20px */
+    }
+    
+    .text-2xl {
+        font-size: 1.875rem !important; /* 30px instead of 24px */
     }
 }
 
@@ -86,6 +113,27 @@
     .shimmer {
         background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         animation: shimmer 2s ease-in-out infinite;
+    }
+    
+    /* Fix very small text sizes */
+    .text-\[8px\] {
+        font-size: 0.75rem !important;
+    }
+    
+    .text-\[9px\] {
+        font-size: 0.8125rem !important;
+    }
+    
+    .text-\[10px\] {
+        font-size: 0.875rem !important;
+    }
+    
+    .text-\[11px\] {
+        font-size: 0.9375rem !important;
+    }
+    
+    .text-\[7px\] {
+        font-size: 0.6875rem !important;
     }
 }
 
