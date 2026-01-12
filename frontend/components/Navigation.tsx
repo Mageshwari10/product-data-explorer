@@ -53,33 +53,33 @@ function CategoryPreview({ slug, title, isSub = false }: { slug: string; title: 
     const description = getCategoryDescription(slug);
 
     return (
-        <div className={`absolute top-full ${isSub ? 'left-0' : 'left-1/2 -translate-x-1/2'} mt-0 pt-0 w-[350px] opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-500 ease-out translate-y-4 group-hover/item:translate-y-0 z-[60]`}>
+        <div className={`absolute top-full ${isSub ? 'left-0' : 'left-1/2 -translate-x-1/2'} mt-0 pt-0 w-[320px] sm:w-[350px] opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-500 ease-out translate-y-4 group-hover/item:translate-y-0 z-[60]`}>
             <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden mt-3 ring-1 ring-white/20">
-                <div className="p-4 bg-gradient-to-r from-slate-900 to-slate-800">
+                <div className="p-3 sm:p-4 bg-gradient-to-r from-slate-900 to-slate-800">
                     <div className="flex justify-between items-start mb-2">
                         <div>
-                            <span className="font-black text-[10px] uppercase tracking-widest text-emerald-400 flex items-center gap-2">
+                            <span className="font-black text-[8px] sm:text-[10px] uppercase tracking-widest text-emerald-400 flex items-center gap-2">
                                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
                                 {displayName}
                             </span>
                             {description && (
-                                <p className="text-[8px] text-slate-400 mt-1 leading-relaxed">{description}</p>
+                                <p className="text-[7px] sm:text-[8px] text-slate-400 mt-1 leading-relaxed hidden sm:block">{description}</p>
                             )}
                         </div>
-                        <span className="text-[8px] text-emerald-600 font-black bg-emerald-500/20 px-2 py-1 rounded-full">
+                        <span className="text-[7px] sm:text-[8px] text-emerald-600 font-black bg-emerald-500/20 px-2 py-1 rounded-full">
                             {products.length} items
                         </span>
                     </div>
                 </div>
-                <div className="p-3 space-y-2 bg-gradient-to-br from-emerald-50/50 to-white max-h-[300px] overflow-y-auto">
+                <div className="p-2 sm:p-3 space-y-2 bg-gradient-to-br from-emerald-50/50 to-white max-h-[250px] sm:max-h-[300px] overflow-y-auto">
                     {products.map((p: any, index: number) => (
                         <Link
                             key={p.id}
                             href={`/product/${p.id}`}
-                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group/product border border-transparent hover:border-emerald-100"
+                            className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group/product border border-transparent hover:border-emerald-100"
                             style={{animationDelay: `${index * 100}ms`}}
                         >
-                            <div className="w-12 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg flex items-center justify-center text-sm group/product:scale-110 transition-transform overflow-hidden relative">
+                            <div className="w-8 h-10 sm:w-12 sm:h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg flex items-center justify-center text-xs sm:text-sm group/product:scale-110 transition-transform overflow-hidden relative">
                                 {p.imageUrl ? (
                                     <img src={p.imageUrl} alt={p.title} className="w-full h-full object-cover" />
                                 ) : (
@@ -87,25 +87,25 @@ function CategoryPreview({ slug, title, isSub = false }: { slug: string; title: 
                                 )}
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="font-bold text-slate-800 truncate uppercase tracking-tighter text-[11px] group/product:text-emerald-600 transition-colors">{p.title}</div>
+                                <div className="font-bold text-slate-800 truncate uppercase tracking-tighter text-[10px] sm:text-[11px] group/product:text-emerald-600 transition-colors">{p.title}</div>
                                 {p.author && (
-                                    <div className="text-[9px] text-slate-500 truncate">by {p.author}</div>
+                                    <div className="text-[7px] sm:text-[9px] text-slate-500 truncate hidden sm:block">by {p.author}</div>
                                 )}
-                                <div className="font-black text-emerald-500 text-[10px] mt-0.5">{p.price} {p.currency}</div>
+                                <div className="font-black text-emerald-500 text-[9px] sm:text-[10px] mt-0.5">{p.price} {p.currency}</div>
                             </div>
                             <div className="flex flex-col items-end gap-1">
-                                <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-xs opacity-0 group/product:opacity-100 transition-all duration-300">
+                                <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[8px] sm:text-xs opacity-0 group/product:opacity-100 transition-all duration-300">
                                     →
                                 </div>
-                                <div className="text-[8px] text-slate-400 font-black">ID: {p.id}</div>
+                                <div className="text-[6px] sm:text-[8px] text-slate-400 font-black hidden sm:block">ID: {p.id}</div>
                             </div>
                         </Link>
                     ))}
                 </div>
-                <div className="px-4 py-2 bg-emerald-50/30 border-t border-emerald-100">
+                <div className="px-3 sm:px-4 py-2 bg-emerald-50/30 border-t border-emerald-100">
                     <Link 
                         href={`/category/${slug}`} 
-                        className="text-xs font-black text-emerald-700 hover:text-emerald-800 transition-colors flex items-center justify-center gap-1 py-2"
+                        className="text-xs sm:text-xs font-black text-emerald-700 hover:text-emerald-800 transition-colors flex items-center justify-center gap-1 py-2"
                     >
                         View all {displayName} →
                     </Link>
@@ -236,16 +236,16 @@ export default function Navigation() {
                 </div>
 
                 {/* Desktop Category Navigation - Secondary Row */}
-                <div className="hidden lg:flex items-center gap-1 border-t border-emerald-50/50 h-14">
+                <div className="hidden md:flex items-center gap-1 border-t border-emerald-50/50 h-14 overflow-x-auto">
                     {/* Books Section */}
-                    <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
-                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Books</span>
+                    <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
+                        <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Books</span>
                     </div>
                     {books.map((item: any) => (
-                        <div key={item.id} className="relative group/item h-full flex items-center">
+                        <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
                             <Link
                                 href={`/category/${item.slug}`}
-                                className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
+                                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
                             >
                                 <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
@@ -257,14 +257,14 @@ export default function Navigation() {
                     {/* Media Section */}
                     {media.length > 0 && (
                         <>
-                            <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Media</span>
+                            <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
+                                <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Media</span>
                             </div>
                             {media.map((item: any) => (
-                                <div key={item.id} className="relative group/item h-full flex items-center">
+                                <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
                                     <Link
                                         href={`/category/${item.slug}`}
-                                        className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
+                                        className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
                                     >
                                         <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
@@ -278,14 +278,14 @@ export default function Navigation() {
                     {/* Other Section */}
                     {others.length > 0 && (
                         <>
-                            <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Services</span>
+                            <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
+                                <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Services</span>
                             </div>
                             {others.map((item: any) => (
-                                <div key={item.id} className="relative group/item h-full flex items-center">
+                                <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
                                     <Link
                                         href={`/category/${item.slug}`}
-                                        className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
+                                        className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
                                     >
                                         <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
