@@ -24,17 +24,23 @@ async function populateDatabase() {
             const navResponse = await fetch(`${API_BASE_URL}/navigation`);
             const navigation = await navResponse.json();
             console.log(`🧭 Navigation items: ${navigation.length}`);
-            
-            const catResponse = await fetch(`${API_BASE_URL}/categories`);
-            const categories = await catResponse.json();
-            console.log(`📂 Categories: ${categories?.length || 0}`);
-            
-            try {
-                const prodResponse = await fetch(`${API_BASE_URL}/products/search/find`);
-                const products = await prodResponse.json();
-                console.log(`📚 Products: ${products?.length || 0}`);
-            } catch (e) {
-                console.log('📚 Products: Checking individual endpoints...');
+
+            const categoriesCount = Array.isArray(navigation)
+                ? navigation.reduce((sum, n) => sum + (Array.isArray(n.categories) ? n.categories.length : 0), 0)
+                : 0;
+            console.log(`📂 Categories (from navigation): ${categoriesCount}`);
+
+            const prodResponse = await fetch(`${API_BASE_URL}/products/search/find`);
+            const prodData = await prodResponse.json();
+            const productsCount = Array.isArray(prodData?.products) ? prodData.products.length : 0;
+            console.log(`� Products: ${productsCount}`);
+
+            if (Array.isArray(navigation) && navigation[0]?.slug) {
+                const sampleSlug = navigation[0].slug;
+                const sampleCatResponse = await fetch(`${API_BASE_URL}/categories/${sampleSlug}?page=1&limit=5`);
+                const sampleCat = await sampleCatResponse.json();
+                const sampleCatProducts = Array.isArray(sampleCat?.products) ? sampleCat.products.length : 0;
+                console.log(`🧪 Sample category '${sampleSlug}' products: ${sampleCatProducts}`);
             }
             
             console.log('\n🎉 Database populated successfully!');
