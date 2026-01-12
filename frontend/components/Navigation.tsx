@@ -236,16 +236,16 @@ export default function Navigation() {
                 </div>
 
                 {/* Desktop Category Navigation - Secondary Row */}
-                <div className="hidden md:flex items-center gap-1 border-t border-emerald-50/50 h-14 overflow-x-auto">
+                <div className="hidden lg:flex items-center gap-1 border-t border-emerald-50/50 h-14">
                     {/* Books Section */}
-                    <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
-                        <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Books</span>
+                    <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
+                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Books</span>
                     </div>
                     {books.map((item: any) => (
-                        <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
+                        <div key={item.id} className="relative group/item h-full flex items-center">
                             <Link
                                 href={`/category/${item.slug}`}
-                                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
+                                className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
                             >
                                 <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
@@ -257,14 +257,14 @@ export default function Navigation() {
                     {/* Media Section */}
                     {media.length > 0 && (
                         <>
-                            <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
-                                <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Media</span>
+                            <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Media</span>
                             </div>
                             {media.map((item: any) => (
-                                <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
+                                <div key={item.id} className="relative group/item h-full flex items-center">
                                     <Link
                                         href={`/category/${item.slug}`}
-                                        className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
+                                        className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
                                     >
                                         <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
@@ -278,14 +278,14 @@ export default function Navigation() {
                     {/* Other Section */}
                     {others.length > 0 && (
                         <>
-                            <div className="flex items-center gap-1 px-2 sm:px-3 border-r border-emerald-100/50 flex-shrink-0">
-                                <span className="text-[7px] sm:text-[9px] font-black text-slate-400 uppercase tracking-widest">Services</span>
+                            <div className="flex items-center gap-1 px-3 border-r border-emerald-100/50">
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Services</span>
                             </div>
                             {others.map((item: any) => (
-                                <div key={item.id} className="relative group/item h-full flex items-center flex-shrink-0">
+                                <div key={item.id} className="relative group/item h-full flex items-center">
                                     <Link
                                         href={`/category/${item.slug}`}
-                                        className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category whitespace-nowrap"
+                                        className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
                                     >
                                         <span className="relative z-10">{getCategoryDisplayName(item.slug, item.title)}</span>
                                         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
