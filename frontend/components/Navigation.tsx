@@ -9,31 +9,52 @@ import { useCart } from '@/lib/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function CategoryPreview({ slug, title, isSub = false }: { slug: string; title: string; isSub?: boolean }) {
-    const { data: catData } = useSWR(`/categories/${slug}?limit=5`, fetcher);
+    const { data: catData } = useSWR(`/categories/${slug}?limit=5`, fetcher, {
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    });
     const products = catData?.products || [];
 
     if (products.length === 0) return null;
 
     return (
-        <div className={`absolute top-full ${isSub ? 'left-0' : 'left-1/2 -translate-x-1/2'} mt-0 pt-0 w-[300px] opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-300 translate-y-2 group-hover/item:translate-y-0 z-[60]`}>
-            <div className="bg-white rounded-3xl shadow-2xl border border-emerald-50 overflow-hidden mt-2">
-                <div className="p-3 bg-slate-900 flex justify-between items-center">
-                    <span className="font-black text-[8px] uppercase tracking-widest text-emerald-400">{title} Spotlight</span>
+        <div className={`absolute top-full ${isSub ? 'left-0' : 'left-1/2 -translate-x-1/2'} mt-0 pt-0 w-[320px] opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-500 ease-out translate-y-4 group-hover/item:translate-y-0 z-[60]`}>
+            <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden mt-3 ring-1 ring-white/20">
+                <div className="p-4 bg-gradient-to-r from-slate-900 to-slate-800 flex justify-between items-center">
+                    <span className="font-black text-[9px] uppercase tracking-widest text-emerald-400 flex items-center gap-2">
+                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                        {title} Spotlight
+                    </span>
+                    <span className="text-[8px] text-emerald-600 font-black">{products.length} books</span>
                 </div>
-                <div className="p-2 space-y-1 bg-emerald-50/5">
-                    {products.map((p: any) => (
+                <div className="p-3 space-y-2 bg-gradient-to-br from-emerald-50/50 to-white">
+                    {products.map((p: any, index: number) => (
                         <Link
                             key={p.id}
                             href={`/product/${p.id}`}
-                            className="flex items-center gap-3 p-2 rounded-xl hover:bg-white hover:shadow-sm transition-all"
+                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 group/product border border-transparent hover:border-emerald-100"
+                            style={{animationDelay: `${index * 100}ms`}}
                         >
-                            <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-xs">📖</div>
-                            <div className="flex-1 min-w-0 text-[10px]">
-                                <div className="font-bold text-slate-800 truncate uppercase tracking-tighter">{p.title}</div>
-                                <div className="font-black text-emerald-500">{p.price} {p.currency}</div>
+                            <div className="w-10 h-10 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg flex items-center justify-center text-sm group/product:scale-110 transition-transform">
+                                📖
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="font-bold text-slate-800 truncate uppercase tracking-tighter text-[11px] group/product:text-emerald-600 transition-colors">{p.title}</div>
+                                <div className="font-black text-emerald-500 text-[10px] mt-0.5">{p.price} {p.currency}</div>
+                            </div>
+                            <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-xs opacity-0 group/product:opacity-100 transition-all duration-300">
+                                →
                             </div>
                         </Link>
                     ))}
+                </div>
+                <div className="px-4 py-2 bg-emerald-50/30 border-t border-emerald-100">
+                    <Link 
+                        href={`/category/${slug}`} 
+                        className="text-xs font-black text-emerald-700 hover:text-emerald-800 transition-colors flex items-center justify-center gap-1 py-2"
+                    >
+                        View all {title} books →
+                    </Link>
                 </div>
             </div>
         </div>
@@ -122,14 +143,15 @@ export default function Navigation() {
                 </div>
 
                 {/* Desktop Category Navigation - Secondary Row */}
-                <div className="hidden lg:flex items-center gap-1 border-t border-emerald-50/50 h-12">
+                <div className="hidden lg:flex items-center gap-1 border-t border-emerald-50/50 h-14">
                     {books.map((item: any) => (
                         <div key={item.id} className="relative group/item h-full flex items-center">
                             <Link
                                 href={`/category/${item.slug}`}
-                                className="px-3 py-1.5 text-sm font-black uppercase tracking-widest text-slate-500 hover:text-emerald-600 transition-all border border-transparent hover:border-emerald-100 hover:bg-emerald-50 rounded-lg"
+                                className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-emerald-600 transition-all duration-300 border border-transparent hover:border-emerald-200 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg group/category"
                             >
-                                {item.title}
+                                <span className="relative z-10">{item.title}</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
                             </Link>
                             <CategoryPreview slug={item.slug} title={item.title} />
                         </div>
@@ -141,9 +163,10 @@ export default function Navigation() {
                         <div key={item.id} className="relative group/item h-full flex items-center">
                             <Link
                                 href={`/category/${item.slug}`}
-                                className="px-3 py-1.5 text-sm font-black uppercase tracking-widest text-slate-500 hover:text-emerald-600 transition-all border border-transparent hover:border-emerald-100 hover:bg-emerald-50 rounded-lg"
+                                className="px-4 py-2 text-sm font-black uppercase tracking-widest text-slate-600 hover:text-blue-600 transition-all duration-300 border border-transparent hover:border-blue-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-lg group/category"
                             >
-                                {item.title}
+                                <span className="relative z-10">{item.title}</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
                             </Link>
                             <CategoryPreview slug={item.slug} title={item.title} />
                         </div>
@@ -155,9 +178,10 @@ export default function Navigation() {
                         <Link
                             key={item.id}
                             href={`/category/${item.slug}`}
-                            className="px-3 py-1.5 text-sm font-black uppercase tracking-widest text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
+                            className="px-4 py-2 text-sm font-black uppercase tracking-widest text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 rounded-lg transition-all duration-300 border border-transparent hover:border-emerald-200 group/category"
                         >
-                            {item.title}
+                            <span className="relative z-10">{item.title}</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group/category:opacity-10 transition-opacity duration-300"></div>
                         </Link>
                     ))}
                 </div>
