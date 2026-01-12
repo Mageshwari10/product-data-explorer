@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @layer base {
 
     h1,
@@ -12,22 +14,34 @@
     }
 
     body {
-        @apply font-inter tracking-tight bg-[#f0f9f4] text-slate-900;
+        @apply font-inter tracking-tight bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-slate-900;
+    }
+
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
     }
 }
 
 @layer components {
     .glass {
-        @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl;
+        @apply bg-white/70 backdrop-blur-2xl border border-white/60 shadow-2xl ring-1 ring-white/20;
+    }
+
+    .glass-dark {
+        @apply bg-slate-900/70 backdrop-blur-2xl border border-slate-700/60 shadow-2xl ring-1 ring-slate-700/20;
     }
 
     .nav-link {
-        @apply relative text-slate-600 hover:text-emerald-600 font-medium transition-colors duration-200 py-1;
+        @apply relative text-slate-600 hover:text-emerald-600 font-medium transition-all duration-300 py-1;
     }
 
     .nav-link::after {
         content: '';
-        @apply absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 rounded-full;
+        @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500 rounded-full;
     }
 
     .nav-link:hover::after {
@@ -35,11 +49,43 @@
     }
 
     .btn-premium {
-        @apply px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
+        @apply px-8 py-4 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-500 active:scale-95 flex items-center justify-center gap-2 relative overflow-hidden group;
+    }
+
+    .btn-premium::before {
+        content: '';
+        @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700 group-hover:translate-x-full;
     }
 
     .gradient-text {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600;
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700;
+    }
+
+    .card-shine {
+        @apply relative overflow-hidden;
+    }
+
+    .card-shine::before {
+        content: '';
+        @apply absolute -inset-[100%] bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-[-30deg] pointer-events-none;
+        transition: transform 0.7s;
+    }
+
+    .card-shine:hover::before {
+        transform: translateX(200%);
+    }
+
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    .shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shimmer 2s ease-in-out infinite;
     }
 }
 
@@ -53,16 +99,32 @@
     display: none;
 }
 
-.card-shine {
-    @apply relative overflow-hidden;
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
 }
 
-.card-shine::before {
-    content: '';
-    @apply absolute -inset-[100%] bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-[-30deg] pointer-events-none;
-    transition: transform 0.7s;
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
 }
 
-.card-shine:hover::before {
-    transform: translateX(200%);
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: slideInFromBottom 0.8s ease-out;
 }
