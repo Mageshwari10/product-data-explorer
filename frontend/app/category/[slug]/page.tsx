@@ -20,7 +20,11 @@ export default function CategoryPage() {
     const { data: catData, error, isLoading, mutate } = useSWR(
         `/categories/${slug}?page=${page}&limit=${limit}`,
         fetcher,
-        { keepPreviousData: true }
+        { 
+            keepPreviousData: true,
+            revalidateOnFocus: true,
+            revalidateOnReconnect: true
+        }
     );
 
     const [scraping, setScraping] = useState(false);

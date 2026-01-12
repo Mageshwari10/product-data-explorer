@@ -13,7 +13,10 @@ function SearchContent() {
     const searchParams = useSearchParams();
     const query = searchParams.get('q') || '';
 
-    const { data, isLoading } = useSWR(query ? `/products/search/find?q=${encodeURIComponent(query)}` : null, fetcher);
+    const { data, isLoading } = useSWR(query ? `/products/search/find?q=${encodeURIComponent(query)}` : null, fetcher, {
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
+    });
 
     const products = data?.products || [];
     const total = data?.total || 0;

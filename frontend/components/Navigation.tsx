@@ -41,7 +41,10 @@ function CategoryPreview({ slug, title, isSub = false }: { slug: string; title: 
 }
 
 export default function Navigation() {
-    const { data: navItems } = useSWR('/navigation', fetcher);
+    const { data: navItems } = useSWR('/navigation', fetcher, {
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
+    });
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const { cartCount } = useCart();
