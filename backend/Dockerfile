@@ -1,11 +1,12 @@
-FROM node:18
+FROM mcr.microsoft.com/playwright:v1.40.0-focal
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm install
+# Install Node.js (Playwright image comes with it, but let's ensure we are using a compatible version)
+# Actually, the playwright image ALREADY has node. Let's just use it.
 
-RUN npm install -g @nestjs/cli
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 

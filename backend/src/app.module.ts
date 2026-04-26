@@ -26,7 +26,13 @@ import { SeedModule } from './seed/seed.module';
             password: process.env.DATABASE_PASSWORD,
             database: process.env.DATABASE_NAME,
             entities: [Navigation, Category, Product, ProductDetail, Review, ScrapeJob, ViewHistory],
-            synchronize: process.env.NODE_ENV === 'development', // Only sync in development
+            synchronize: true, // Set to true to ensure tables are created on Render
+            ssl: process.env.NODE_ENV === 'production',
+            extra: process.env.NODE_ENV === 'production' ? {
+                ssl: {
+                    rejectUnauthorized: false,
+                },
+            } : {},
         }),
         TypeOrmModule.forFeature([Navigation, Category, Product, ProductDetail, Review, ScrapeJob, ViewHistory]),
         NavigationModule,
