@@ -20,11 +20,7 @@ import { SeedModule } from './seed/seed.module';
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot({
             type: 'postgres',
-            host: process.env.DATABASE_HOST,
-            port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
-            username: process.env.DATABASE_USER,
-            password: process.env.DATABASE_PASSWORD,
-            database: process.env.DATABASE_NAME,
+            url: process.env.DATABASE_URL,
             entities: [Navigation, Category, Product, ProductDetail, Review, ScrapeJob, ViewHistory],
             synchronize: true, // Set to true to ensure tables are created on Render
             ssl: process.env.NODE_ENV === 'production',
